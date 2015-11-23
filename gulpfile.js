@@ -38,26 +38,25 @@ gulp.task('mv-html', function() {
   .pipe(gulp.dest('dist/'));
 });
 
-// gulp.task('less', function() {
-//   gulp.src('src/less/**/*.less')
-//   .pipe(less({style: 'compressed' }).on('error', gutil.log))
-//   .pipe(gulp.dest('dist/css/'))
-// });
+gulp.task('less', function() {
+  gulp.src('src/style/less/style.less')
+  .pipe(less({style: 'compressed' }).on('error', gutil.log))
+  .pipe(gulp.dest('dist/css/'))
+});
 
 gulp.task('watch', function() {
   gulp.watch(['src/**/*.js'], [
     'javascript'
   ]);
-  // gulp.watch(['src/**/*.less'], [
-  //   'less'
-  // ]);
+  gulp.watch(['src/**/*.less'], [
+    'less'
+  ]);
   gulp.watch(['src/**/*.html'], [
     'mv-html'
   ]);
 });
 
-// gulp.task('dist', ['less', 'mv-html', 'javascript'], function() {
-gulp.task('dist', ['mv-html', 'javascript'], function() {  
+gulp.task('dist', ['less', 'mv-html', 'javascript'], function() {
   console.log( "Dist built @ " + new Date());
 });
 
