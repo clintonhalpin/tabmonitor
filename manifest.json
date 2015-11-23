@@ -1,0 +1,18 @@
+{
+  "name": "Tab Monitor",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "See how many tabs you open every day!",
+  "homepage_url": "http://clintonhalpin.com",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "dist/override.html"
+  },
+  "permissions" : [
+    "storage"
+  ]
+}
