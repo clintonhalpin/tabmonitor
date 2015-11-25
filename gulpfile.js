@@ -9,7 +9,8 @@ var gulp = require('gulp'),
     buffer = require('vinyl-buffer'),
     uglify = require('gulp-uglify'),
     stringify = require('stringify'),
-    babelify = require('babelify');
+    babelify = require('babelify'),
+    reactify = require('reactify');
 
 var onError = function(err) {
     console.error(err.message);
@@ -20,7 +21,8 @@ gulp.task('javascript', function () {
   var b = browserify({
     entries: './src/js/inject.js',
     debug: true
-  }).transform(babelify);
+  }).transform(babelify)
+  .transform(reactify);
 
   return b.bundle()
     .pipe(source('inject.js'))
