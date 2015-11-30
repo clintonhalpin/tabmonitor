@@ -1,6 +1,6 @@
 {
   "name": "tab-monitor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Monitor how many tabs you've opened in a day!",
   "main": "index.js",
   "scripts": {
