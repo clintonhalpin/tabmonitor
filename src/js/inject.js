@@ -58,7 +58,11 @@ document.addEventListener("DOMContentLoaded", function() {
       
       // If we haven't created the store updated it!
       if(!res.appCache) {
-      	setStorage({ storeName : tabObject })
+      	setStorage({ 'appCache' : tabObject })
+      	setInnerHTML('number', tabObject.tabs)
+      	var title = document.querySelectorAll('title')[0];
+
+      	title.innerHTML = 'New Tab (' + tabObject.tabs + ' today)';
       }
 
       // If the current UID dosen't match stored UID
