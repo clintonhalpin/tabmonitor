@@ -61,13 +61,16 @@ document.addEventListener("DOMContentLoaded", function() {
       	setStorage({ 'appCache' : tabObject })
       	setInnerHTML('number', tabObject.tabs)
       	var title = document.querySelectorAll('title')[0];
-
       	title.innerHTML = 'New Tab (' + tabObject.tabs + ' today)';
       }
 
       // If the current UID dosen't match stored UID
       else if(res.appCache.uid != currentUID) {
-      	// blast storage, reset cound
+      	console.log('true')
+      	setStorage({ 'appCache' : tabObject })
+      	setInnerHTML('number', tabObject.tabs)
+      	var title = document.querySelectorAll('title')[0];
+      	title.innerHTML = 'New Tab (' + tabObject.tabs + ' today)';
       }
 
       else {
