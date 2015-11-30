@@ -1,4 +1,5 @@
 'use strict'; 
+
 var storeName = 'appCache';
 
 var TabDate = function() { 
@@ -46,32 +47,31 @@ document.addEventListener("DOMContentLoaded", function() {
   if(!navigator.onLine) {
     renderOffLineApp();
   } else {
+  	var currentUID = getDateUID();
+  	
+  	var tabObject = {
+  		uid: currentUID,
+  		tabs: 1
+  	};
+
     checkStorage( storeName ).then(function(res) {
-      var store = {
-        days: [],
-        aggregate: {}
-      };
+      
+      // If we haven't created the store updated it!
+      if(!res.appCache) {
+      	setStorage({ storeName : tabObject })
+      }
 
-      // Construct New TabDate ( Day with Analytics )
-      store.days.push(new TabDate())
-      store.days.push(new TabDate())
-      store.days.push(new TabDate())
-      store.days.push(new TabDate())
-      store.days.push(new TabDate())
-      store.days.push(new TabDate())
-      store.days.push(new TabDate())
+      // If the current UID dosen't match stored UID
+      else if(res.appCache.uid != currentUID) {
+      	// blast storage, reset cound
+      }
 
-      // Increment Tabs
-      store.days[0].tabs++
-      store.days[0].tabs++
-      store.days[1].tabs++
-      store.days[2].tabs++
-      store.days[3].tabs++
-      store.days[4].tabs++
-      store.days[5].tabs++
-      store.days[6].tabs++
-
-      console.log(store)
+      else {
+      	tabObject.tabs = res.appCache.tabs;
+      	tabObject.tabs++
+      	setStorage({ 'appCache' : tabObject});
+      	setInnerHTML('number', tabObject.tabs)
+      }
     });
   }
 });
