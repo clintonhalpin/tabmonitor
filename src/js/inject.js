@@ -71,6 +71,9 @@ document.addEventListener("DOMContentLoaded", function() {
       	tabObject.tabs++
       	setStorage({ 'appCache' : tabObject});
       	setInnerHTML('number', tabObject.tabs)
+      	var title = document.querySelectorAll('title')[0];
+
+      	title.innerHTML = 'New Tab (' + tabObject.tabs + ' today)';
       }
     });
   }
